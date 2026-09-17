@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: pesados-whatsapp-agent
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PESADOS_API_URL
+        value: https://api.app-pesados.com
+      - key: TRACAO_MCP_URL
+        value: https://tracao.bmchyundai.com.br/mcp
+      # Os demais são segredos — configure no painel do Render:
+      # PESADOS_EMAIL, PESADOS_PASSWORD
+      # ANTHROPIC_API_KEY
+      # TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_NUMBER
+      # SUPABASE_URL, SUPABASE_SERVICE_KEY
+      # ALLOWED_PHONES (opcional)
